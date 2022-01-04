@@ -10,7 +10,7 @@ local defaults = {
   replicas: error 'must provide replicas',
   resources: {},
   ports: {
-    http: 8481,
+    http: 9090,
   },
   serviceMonitor: false,
   logLevel: 'INFO',
