@@ -17,6 +17,7 @@ vm({
         memory: '20Gi'
       },
     },
+    extraArgs: ['--maxUniqueTimeseries=3000000'],
     volumeClaimTemplate: {
       spec: {
         accessModes: ['ReadWriteOnce'],

@@ -16,6 +16,7 @@ local defaults = {
   serviceMonitor: false,
   logLevel: 'INFO',
   logFormat: 'default',
+  extraArgs: [],
   storageDataPath: '/victoria-metrics-data',
   listenAddr: ':%d' % defaults.ports.http,
   volumeClaimTemplate: {},
@@ -103,6 +104,9 @@ function(params) {
       ) + (
           if std.length(vm.config.listenAddr) > 0 
           then ['--httpListenAddr=%s' % vm.config.listenAddr] else []
+      ) + (
+          if std.length(vm.config.extraArgs) > 0
+          then vm.config.extraArgs else []
       ),
       env: [
         { name: 'NAME', valueFrom: { fieldRef: { fieldPath: 'metadata.name' } } },
