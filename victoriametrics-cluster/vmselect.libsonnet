@@ -31,11 +31,6 @@ local defaults = {
     for labelName in std.objectFields(defaults.commonLabels)
     if labelName != 'app.kubernetes.io/version'
   },
-
-  securityContext:: {
-    fsGroup: 65534,
-    runAsUser: 65534,
-  },
 };
 
 function(params) {
@@ -137,7 +132,6 @@ function(params) {
           },
           spec: {
             serviceAccountName: vm.serviceAccount.metadata.name,
-            securityContext: vm.config.securityContext,
             containers: [c],
             volumes: [],
             terminationGracePeriodSeconds: 15,
