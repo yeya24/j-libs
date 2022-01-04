@@ -148,11 +148,11 @@ function(params) {
               local labelSelector = { matchExpressions: [{
                 key: 'app.kubernetes.io/name',
                 operator: 'In',
-                values: [vm.statefulSet.metadata.labels['app.kubernetes.io/name']],
+                values: [vm.deployment.metadata.labels['app.kubernetes.io/name']],
               }, {
                 key: 'app.kubernetes.io/instance',
                 operator: 'In',
-                values: [vm.statefulSet.metadata.labels['app.kubernetes.io/instance']],
+                values: [vm.deployment.metadata.labels['app.kubernetes.io/instance']],
               }] },
               preferredDuringSchedulingIgnoredDuringExecution: [
                 {
