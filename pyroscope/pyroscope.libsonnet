@@ -18,6 +18,9 @@ local defaults = {
     'scrape-configs': [],
   },
 
+  cacheEvictThreshold: 0.2,
+  cacheEvictVolume: 0.33,
+
   resources: {},
   port: 4040,
 
@@ -169,7 +172,10 @@ function(params) {
       args:
         [
           'server',
-          '-config=' + prc.config.configPath,
+          '--config=' + prc.config.configPath,
+          '--analytics-opt-out=true',
+          '--cache-evict-threshold=' + prc.config.cacheEvictThreshold,
+          '--cache-evict-volume=' + prc.config.cacheEvictVolume,
         ],
       ports: [
         { name: port.name, containerPort: port.port }
