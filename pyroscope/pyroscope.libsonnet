@@ -12,9 +12,10 @@ local defaults = {
 
   configPath: '/var/pyroscope/config.yaml',
   configmapName: 'pyroscope-config',
+  retention: '4h',
   config: {
     'log-level': 'info',
-    'retention': '4h',
+    'retention': defaults.retention,
     'scrape-configs': [],
   },
 
