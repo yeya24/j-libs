@@ -1,5 +1,4 @@
-local p = (import '../pyroscope.libsonnet');
-local psts = (import '../pyroscope-sts.libsonnet');
+local p = (import '../pyroscope-sts.libsonnet');
 
 local defaults = {
     namespace: 'monitoring',
@@ -20,6 +19,17 @@ p(defaults + {
       limits: {
         cpu: '4',
         memory: '16Gi',
+      },
+    },
+    volumeClaimTemplate: {
+      spec: {
+        accessModes: ['ReadWriteOnce'],
+        storageClassName: defaults.storageClassName,
+        resources: {
+          requests: {
+            storage: '200Gi',
+          },
+        },
       },
     },
     config+: {
