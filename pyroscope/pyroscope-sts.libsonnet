@@ -206,7 +206,7 @@ function(params) {
         replicas: prc.config.replicas,
         selector: { matchLabels: prc.config.podLabelSelector },
         serviceName: prc.service.metadata.name,
-        volumeClaimTemplates: if std.length(prc.config.volumeClaimTemplate) > 0 then [vm.config.volumeClaimTemplate {
+        volumeClaimTemplates: if std.length(prc.config.volumeClaimTemplate) > 0 then [prc.config.volumeClaimTemplate {
           metadata+: {
             name: 'pyroscope-data',
             labels+: prc.config.podLabelSelector,
