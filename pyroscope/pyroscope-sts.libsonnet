@@ -156,6 +156,7 @@ function(params) {
         [
           'server',
           '--config=' + prc.config.configPath,
+          '--no-adhoc-ui=true',
           '--analytics-opt-out=true',
           '--cache-evict-threshold=' + prc.config.cacheEvictThreshold,
           '--cache-evict-volume=' + prc.config.cacheEvictVolume,
